@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+message: "If you use EMBER in your work, please cite it using this metadata."
+type: software
+
+title: "EMBER: Semantic Intent Language for Project Phoenix"
+version: 0.1.0
+date-released: 2026-04-25
+
+authors:
+  - family-names: Shatny
+    given-names: Michael
+    orcid: "https://orcid.org/0009-0006-2011-3258"
+
+abstract: >
+  EMBER is the artifact language of Project Phoenix — a seven-agent pipeline
+  for legacy system modernization. EMBER is methodology-as-memory: a
+  line-oriented DSL (.sil files) that carries the artifacts of a
+  transformation pipeline forward across agents and humans in a format both
+  can read without a manual. This package provides the parser, serializer,
+  and CLI for EMBER Semantic Intent Language files.
+  npm: @semanticintent/ember. bin: ember.
+
+keywords:
+  - ember
+  - sil
+  - semantic-intent-language
+  - phoenix
+  - legacy-modernization
+  - methodology-as-infrastructure
+  - dsl
+  - parser
+  - typescript
+
+license: MIT
+
+repository-code: "https://github.com/semanticintent/ember"
+url: "https://phoenix.semanticintent.dev/ember"
+
+references:
+  - type: software
+    title: "Phoenix Runtime: Orchestration Layer for the Seven-Agent Legacy Modernization Pipeline"
+    authors:
+      - family-names: Shatny
+        given-names: Michael
+        orcid: "https://orcid.org/0009-0006-2011-3258"
+    doi: "10.5281/zenodo.19360782"
+
+  - type: software
+    title: "Project Phoenix: The Agentic Greenfield Pipeline for Legacy Modernization"
+    authors:
+      - family-names: Shatny
+        given-names: Michael
+        orcid: "https://orcid.org/0009-0006-2011-3258"
+    doi: "10.5281/zenodo.19360727"
+
+  - type: article
+    title: "Methodology-as-Infrastructure: From Framework to Runtime"
+    authors:
+      - family-names: Shatny
+        given-names: Michael
+        orcid: "https://orcid.org/0009-0006-2011-3258"
+    doi: "10.5281/zenodo.18946631"
+
+  - type: software
+    title: "CAL Runtime: Cormorant Agentic Language Execution Engine"
+    authors:
+      - family-names: Shatny
+        given-names: Michael
+        orcid: "https://orcid.org/0009-0006-2011-3258"
+    doi: "10.5281/zenodo.18905193"
