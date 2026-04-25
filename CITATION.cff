@@ -3,8 +3,9 @@ message: "If you use EMBER in your work, please cite it using this metadata."
 type: software
 
 title: "EMBER: Semantic Intent Language for Project Phoenix"
-version: 0.1.0
+version: 0.1.1
 date-released: 2026-04-25
+doi: "10.5281/zenodo.19751387"
 
 authors:
   - family-names: Shatny
