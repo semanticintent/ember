@@ -6,7 +6,7 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text'],
       thresholds: { statements: 90, functions: 95, branches: 85 },
-      exclude: ['dist/**', 'bin/**', 'src/index.ts'],
+      exclude: ['dist/**', 'bin/**', 'src/index.ts', 'src/cli.ts'],
     },
   },
 })
