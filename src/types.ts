@@ -8,6 +8,11 @@ export type ConstructType =
   | 'blueprint'
   | 'build'
   | 'certification'
+  | 'schema'
+  | 'routine'
+  | 'job'
+  | 'dependency'
+  | 'decision'
 
 export interface EmberConstruct {
   construct: ConstructType

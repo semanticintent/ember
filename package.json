@@ -1,6 +1,6 @@
 {
   "name": "@semanticintent/ember",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "EMBER — Semantic Intent Language parser, serializer, and CLI. The artifact language of Project Phoenix.",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
