@@ -1,0 +1,11 @@
+CONSTRUCT  signal
+ID         cart.checkout
+VERSION    1
+─────────────────────────────────────────
+type:      workflow
+entry:     POST /cart/submit
+entities:  Cart, Order, Payment, User
+boundary:  Stripe, SendGrid, PostgreSQL
+source:    route table, API docs
+confidence: high
+notes:     High abandonment reported at payment step

@@ -1,0 +1,52 @@
+{
+  "name": "@semanticintent/ember",
+  "version": "0.1.0",
+  "description": "EMBER — Semantic Intent Language parser, serializer, and CLI. The artifact language of Project Phoenix.",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "bin": {
+    "ember": "./bin/ember.js"
+  },
+  "files": [
+    "dist/",
+    "bin/",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "build": "tsc",
+    "dev": "vitest watch",
+    "validate": "npm run build && npm run test:coverage",
+    "prepublishOnly": "npm run validate"
+  },
+  "keywords": [
+    "ember",
+    "sil",
+    "semantic-intent-language",
+    "phoenix",
+    "legacy-modernization",
+    "methodology-as-infrastructure",
+    "dsl",
+    "parser"
+  ],
+  "author": "Michael Shatny",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/semanticintent/ember.git"
+  },
+  "homepage": "https://phoenix.semanticintent.dev/ember",
+  "bugs": {
+    "url": "https://github.com/semanticintent/ember/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@vitest/coverage-v8": "^1.6.1",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.0"
+  }
+}

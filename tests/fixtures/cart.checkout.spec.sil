@@ -1,0 +1,34 @@
+CONSTRUCT  spec
+ID         cart.checkout
+VERSION    1
+─────────────────────────────────────────
+intent:
+  Allow a customer to purchase items in their cart
+  and receive order confirmation
+
+journey:
+  Cart review → Shipping → Payment → Confirmation
+
+inputs:
+  promoCode       optional
+  address         required
+  deliveryOption  required
+  cardDetails     required
+
+rules:
+  - Promo applied before total calculated
+  - Charge must succeed before order is created
+  - Confirmation sent only on successful order
+  - Guest checkout allowed — login not required
+
+outputs:
+  orderId
+  confirmation to user via email
+
+boundaries:
+  Stripe    → payment processing
+  SendGrid  → order confirmation email
+  DB        → order record persistence
+
+gaps:
+  - Partial refund logic not found in UI — check A-01

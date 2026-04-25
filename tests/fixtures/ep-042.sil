@@ -1,0 +1,24 @@
+CONSTRUCT  episode
+ID         ep-042
+VERSION    1
+─────────────────────────────────────────
+date:     2026-03-15
+trigger:  client requirement change
+status:   open
+
+change:
+  Add guest checkout — purchase without login required
+
+reason:
+  Client data shows 40% cart abandonment at registration step
+
+affects:
+  A-01  → add guest.checkout workflow
+  A-02  → add guest path screens to cart.checkout
+  A-03  → update spec — guest vs authenticated intent
+  A-05  → new UI pass and API route for guest flow
+  A-06  → extend test coverage to include guest path
+
+skip:
+  A-00  → brief unchanged
+  A-04  → stack unchanged
