@@ -1,0 +1,38 @@
+CONSTRUCT  screen
+ID         cart.checkout
+VERSION    1
+─────────────────────────────────────────
+SCREEN 1 — Cart review
+┌─────────────────────────────────────┐
+│  Your Cart                          │
+│  ─────────────────────────────────  │
+│  [ ] Product name          $24.00   │
+│  Promo code:  [______________]      │
+│  Subtotal:                 $36.00   │
+│  [Checkout →]                       │
+└─────────────────────────────────────┘
+on: "Checkout →" → SCREEN 2
+
+SCREEN 2 — Payment
+┌─────────────────────────────────────┐
+│  Card:    [____________________]    │
+│  Expiry:  [______]   CVV: [____]    │
+│  [← Back]         [Place Order →]  │
+└─────────────────────────────────────┘
+on: "Place Order →" → SCREEN 3
+
+SCREEN 3 — Confirmation
+┌─────────────────────────────────────┐
+│  Order Confirmed ✓                  │
+│  Order #:  84921                    │
+│  [Continue Shopping]                │
+└─────────────────────────────────────┘
+on: "Continue Shopping" → home
+
+server:  workflows/cart.checkout.sil
+mapping:
+  SCREEN 1  →  display only
+  SCREEN 2  →  chargePayment(), createOrder()
+  SCREEN 3  →  sendConfirmation() → result displayed
+
+confidence:  high

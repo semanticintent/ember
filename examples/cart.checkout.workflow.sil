@@ -1,0 +1,17 @@
+CONSTRUCT  workflow
+ID         cart.checkout
+VERSION    1
+─────────────────────────────────────────
+entry:  POST /cart/submit
+actor:  authenticated user
+
+  validateCart(cartId, userId)
+  calculateTotal(items, promoCode)
+  chargePayment(total, method)      → Stripe
+  createOrder(cartId, chargeId)     → DB write
+  sendConfirmation(userId, orderId) → SendGrid
+
+out:    orderId, 200 OK
+error:  payment failure → 402, order not created
+
+confidence:  high

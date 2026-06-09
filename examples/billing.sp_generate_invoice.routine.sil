@@ -1,0 +1,23 @@
+CONSTRUCT  routine
+ID         billing.sp_generate_invoice
+VERSION    1
+─────────────────────────────────────────
+type:      stored-procedure
+entry:     EXEC billing.sp_generate_invoice @order_id, @issued_by
+reads:     orders, order_lines, customers, tax_rates
+writes:    invoices, invoice_lines, audit_log
+
+logic:
+  - Calculates line totals before tax
+  - Applies customer-specific tax rate if exists, else default
+  - Inserts invoice header then lines in single transaction
+  - Writes audit entry on completion
+
+boundaries:
+  → linked server REPORTING for audit mirror (write-through)
+
+gaps:
+  - No rollback on audit write failure — silent data loss possible
+  - Tax rate lookup has no fallback if customer record missing
+
+confidence: high

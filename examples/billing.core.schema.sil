@@ -1,0 +1,22 @@
+CONSTRUCT  schema
+ID         billing.core
+VERSION    1
+─────────────────────────────────────────
+tables:
+  invoices        → 2.3M rows, partitioned by year
+  invoice_lines   → 18.4M rows, FK to invoices
+  payment_events  → 4.1M rows, append-only
+
+relationships:
+  invoices → invoice_lines  (1:many, CASCADE DELETE)
+  invoices → payment_events (1:many, no cascade)
+
+constraints:
+  invoices.status   CHECK (status IN ('draft','sent','paid','void'))
+  invoice_lines.qty CHECK (qty > 0)
+
+indexes:
+  invoices (customer_id, created_at) — high-read composite
+  payment_events (invoice_id, event_type) — covering
+
+confidence: high

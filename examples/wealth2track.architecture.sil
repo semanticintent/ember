@@ -1,0 +1,20 @@
+CONSTRUCT  architecture
+ID         wealth2track
+VERSION    1
+─────────────────────────────────────────
+target:    React 18 + TypeScript (local-first, PWA)
+rationale:
+  Flutter/Firebase → browser-native eliminates app store dependency.
+  Local-first with IndexedDB satisfies offline requirement.
+  No backend — Firebase costs removed, privacy surface reduced.
+
+constraints:
+  - Must work offline — IndexedDB as primary store, sync on connect
+  - No authentication changes — existing Firebase Auth retained
+  - Budget ceiling: zero new infrastructure
+
+risks:
+  - IndexedDB sync conflict resolution not specified — flagged to A-05
+  - PWA install prompt UX varies by browser
+
+confidence:  high

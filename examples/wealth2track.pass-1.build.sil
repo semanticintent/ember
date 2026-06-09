@@ -1,0 +1,22 @@
+CONSTRUCT  build
+ID         wealth2track.pass-1
+VERSION    1
+─────────────────────────────────────────
+pass:      1
+scope:     data layer + core transaction CRUD
+
+implemented:
+  - IndexedDB schema — transactions, categories, accounts stores
+  - TransactionStore service — add, update, delete, list by date range
+  - CategoryStore service — CRUD, colour assignment
+  - Seed data loader for initial categories
+
+skipped:
+  - Sync layer — deferred to pass-2, conflict strategy needs A-04 clarification
+  - Import/export — not in A-03 spec, flagged as episode candidate
+
+discovered:
+  - IndexedDB migration path not specified in blueprint — added as ep-044
+  - Category delete cascade requires transaction category nullification
+
+confidence:  high

@@ -1,0 +1,26 @@
+CONSTRUCT  blueprint
+ID         wealth2track.data
+VERSION    1
+─────────────────────────────────────────
+layer:     data
+concern:   local-first storage model
+
+entities:
+  Transaction   id, amount, category, date, note, syncedAt
+  Category      id, name, colour, budgetLimit
+  Account       id, name, currency, openingBalance
+
+stores:
+  transactions  indexed by (date), (category, date)
+  categories    small table, full-scan acceptable
+  accounts      single row per account, no index needed
+
+sync:
+  strategy:   last-write-wins on syncedAt timestamp
+  conflict:   flag to UI — user resolves manually
+
+boundaries:
+  IndexedDB  →  primary store
+  Firebase   →  sync target (write-through on connect)
+
+confidence:  high

@@ -1,0 +1,24 @@
+CONSTRUCT  job
+ID         billing.nightly-rollup
+VERSION    1
+─────────────────────────────────────────
+schedule:  daily 02:00 UTC
+steps:
+  1 → exec billing.sp_close_day_invoices
+  2 → exec reporting.sp_refresh_billing_summary
+  3 → exec dbo.sp_archive_processed_events (linked server)
+
+dependencies:
+  → sp_close_day_invoices must complete before step 2
+  → step 3 requires REPORTING linked server available
+
+outputs:
+  billing_summary table refreshed
+  processed_events archived to REPORTING
+
+failure-behaviour:
+  step 1 failure → alert DBA, abort
+  step 2 failure → continue, flag in log
+  step 3 failure → silent (non-critical archive)
+
+decision:  preserve

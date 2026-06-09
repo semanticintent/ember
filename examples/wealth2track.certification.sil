@@ -1,0 +1,23 @@
+CONSTRUCT  certification
+ID         wealth2track
+VERSION    1
+─────────────────────────────────────────
+result:    certified
+
+spec:      specs/cart.checkout.sil
+build:     builds/wealth2track.pass-3.sil
+
+verified:
+  - All spec rules confirmed in implementation
+  - Charge before order created — verified
+  - Promo applied before total — verified
+  - Guest checkout path — verified (ep-042 resolved)
+
+coverage:
+  unit:         94%
+  integration:  88%
+
+gaps:
+  - Refund flow not in spec — not tested (out of scope, noted)
+
+confidence:  high

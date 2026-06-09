@@ -1,0 +1,36 @@
+CONSTRUCT  spec
+ID         cart.checkout
+VERSION    1
+─────────────────────────────────────────
+intent:
+  Allow a customer to purchase items in their cart
+  and receive order confirmation
+
+journey:
+  Cart review → Payment → Confirmation
+
+inputs:
+  promoCode   optional
+  cardDetails required
+
+rules:
+  - Promo applied before total calculated
+  - Charge must succeed before order is created
+  - Confirmation sent only on successful order
+
+outputs:
+  orderId
+  confirmation to user via email
+
+boundaries:
+  Stripe    → payment processing
+  SendGrid  → order confirmation email
+  DB        → order record persistence
+
+confidence:
+  server:  high
+  ui:      high
+  spec:    high
+
+gaps:
+  - none

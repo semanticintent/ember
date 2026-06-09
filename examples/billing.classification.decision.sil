@@ -1,0 +1,21 @@
+CONSTRUCT  decision
+ID         billing.classification
+VERSION    1
+─────────────────────────────────────────
+scope:     billing domain — 4 tables, 12 routines, 3 jobs, 1 linked server
+
+transform:
+  sp_generate_invoice    → extract to application service layer
+  sp_apply_credit        → extract to application service layer
+  sp_void_invoice        → extract to application service layer
+
+preserve:
+  nightly-rollup job     → operational, no app equivalent
+  REPORTING linked server → archive target, retain during migration
+
+retire:
+  sp_legacy_batch_import → superseded by API ingestion (2019)
+  sp_fix_tax_rounding    → one-time correction, never called post-2021
+
+open:
+  sp_calculate_arrears   → business logic unclear, requires domain expert review

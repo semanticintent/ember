@@ -1,0 +1,11 @@
+CONSTRUCT  dependency
+ID         billing.reporting-server
+VERSION    1
+─────────────────────────────────────────
+type:      linked-server
+target:    REPORTING
+used-by:   sp_generate_invoice (audit mirror), nightly-rollup step 3
+purpose:   archive target — billing audit trail and reporting summary
+
+decision:  preserve
+confidence: high
