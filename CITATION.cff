@@ -5,7 +5,7 @@ type: software
 title: "EMBER: Semantic Intent Language for Project Phoenix"
 version: 0.1.2
 date-released: 2026-04-25
-doi: "10.5281/zenodo.19751387"
+doi: "10.5281/zenodo.19751386"
 
 authors:
   - family-names: Shatny
